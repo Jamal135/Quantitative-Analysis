@@ -55,7 +55,6 @@ def plot_eisen_values(df, filename: str, eigen_values: list, save_png: bool = Tr
     matplotlib.pyplot.axhline(y=1, c='k')
     if save_png:
         matplotlib.pyplot.savefig(f"EFA/{filename}_Eisen_Figure.png")
-    matplotlib.pyplot.show()
 
 
 def plot_efa_results(efa, filename: str, number_topics: int, headers: list,
@@ -73,7 +72,6 @@ def plot_efa_results(efa, filename: str, number_topics: int, headers: list,
     figure.tight_layout()
     if save_png:
         matplotlib.pyplot.savefig(f"EFA/{filename}_EFA_Figure.png")
-    matplotlib.pyplot.show()
 
 
 def determine_topics(filename: str, datafile: str):
@@ -102,13 +100,17 @@ def EFA_analysis(filename: str, datafile: str, number_topics: int, method: str =
     print(f"Cumulative Variance: {summary[2]}")
 
 
-determine_topics("Assessment", "Data")
+#determine_topics("Assessment", "Data")
 #EFA_analysis("Assessment", "Data", 3)
 
 
-topic_options = [2, 3]
-rotation_options = ["varimax", "oblimin", "quartimax", "equamax", "promax"]
 def EFA_pipeline(topic_options: list, rotation_options: list):
     for topics, rotation in itertools.product(topic_options, rotation_options):
         EFA_analysis(f"EFA_{topics}_{rotation}_Figure",
                      "Data", topics, method=rotation)
+
+
+
+topic_options = [2, 3]
+rotation_options = ["varimax", "oblimin", "quartimax", "equamax", "promax"]
+EFA_pipeline(topic_options, rotation_options)
