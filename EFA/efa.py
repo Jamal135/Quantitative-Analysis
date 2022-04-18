@@ -1,9 +1,9 @@
 # Creation Date: 18/04/2022
 
 
-import itertools
 import numpy
 import pandas
+import itertools
 import matplotlib
 import matplotlib.pyplot
 from factor_analyzer import FactorAnalyzer
