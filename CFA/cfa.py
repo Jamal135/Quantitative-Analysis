@@ -1,13 +1,17 @@
 # Creation Date: 19/04/2022
 
+
 import pandas
 from factor_analyzer import ConfirmatoryFactorAnalyzer, ModelSpecificationParser
 
+
 # Multi-Factor CFA
+
 
 # What variables compose each factor:
 model_dict = {"F1": ["V1", "V2", "V3"],
               "F2": ["V5", "V6", "V7"]}
+
 
 def load_CSV(filename: str, drop_list: list = None):
     ''' Returns: CSV loaded to dataframe with select columns dropped. '''
