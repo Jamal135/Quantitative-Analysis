@@ -65,7 +65,6 @@ def plot_eisen_values(filename: str, eigen_values: list, width: int):
     matplotlib.pyplot.scatter(range(1, width+1), eigen_values, c="b")
     matplotlib.pyplot.plot(
         range(1, width+1), eigen_values, "b", label="PAF - Data")
-    matplotlib.pyplot.title('Eigenvalue Analysis', {'fontsize': 20})
     matplotlib.pyplot.xlabel('Factor', {'fontsize': 15})
     matplotlib.pyplot.ylabel('Eigenvalue', {'fontsize': 15})
     matplotlib.pyplot.legend()
@@ -83,7 +82,6 @@ def plot_horn_results(filename: str, eigenvalues: list, average_paf_eigens: list
         range(1, width+1), eigenvalues, c='b', marker='o')
     matplotlib.pyplot.plot(
         range(1, width+1), eigenvalues, 'b', label='PAF - data')
-    matplotlib.pyplot.title('Parallel Analysis', {'fontsize': 20})
     matplotlib.pyplot.xlabel('Factor', {'fontsize': 15})
     matplotlib.pyplot.ylabel('Eigenvalue', {'fontsize': 15})
     matplotlib.pyplot.legend()
@@ -115,7 +113,6 @@ def plot_scree(proportional_variance: list, filename: str, width: int):
     matplotlib.pyplot.figure(figsize=(8, 6))
     matplotlib.pyplot.plot(range(1, width+1), proportional_variance,
                            'o-', linewidth=2, color='blue', label="PAF - Data")
-    matplotlib.pyplot.title('Variance Scree Plot', {'fontsize': 20})
     matplotlib.pyplot.xlabel('Factor', {'fontsize': 15})
     matplotlib.pyplot.ylabel('Variance Explained', {'fontsize': 15})
     matplotlib.pyplot.legend()
@@ -167,7 +164,6 @@ def plot_paf_results(paf, filename: str, number_topics: int, headers: list):
     figure.colorbar(x, ax=axis)
     axis.set_yticks(numpy.arange(paf.loadings_.shape[0])+0.5, minor=False)
     axis.set_xticks(numpy.arange(paf.loadings_.shape[1])+0.5, minor=False)
-    axis.set_title("EFA Results")
     axis.set_yticklabels(headers)
     axis.set_xticklabels(xlabels)
     figure.tight_layout()
