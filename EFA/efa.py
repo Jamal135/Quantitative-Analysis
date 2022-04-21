@@ -179,6 +179,8 @@ def EFA_analysis(data, filename: str, number_topics: int, rotation_method: str, 
     paf.fit(data)
     plot_paf_results(paf, filename, number_topics, headers)
     print(f"Correlation Scores:\n{paf.loadings_}\n", file=log)
+    print(f"Communality Scores:\n{paf.get_communalities()}\n", file=log)
+    print(f"Uniqueness Scores:\n{paf.get_uniquenesses()}\n", file=log)
 
 
 def EFA_pipeline(datafile: str, rotation_list: list = ["oblimin"], eisenvalue: bool = True,
