@@ -185,7 +185,6 @@ def EFA_pipeline(datafile: str, rotation_list: list = ["oblimin"], eisenvalue: b
                  parallel: bool = True, drop_list: list = None, log: str = None):
     ''' Purpose: Completes PAF based EFA given provided arguments. '''
     LOG = prepare_log(datafile, log)
-    print(LOG)
     data = load_CSV(datafile, drop_list)
     total_topics = len(list(data.columns.values))
     determine_topics(data, total_topics,
