@@ -3,6 +3,20 @@ Factorability testing
 
 Bartlett's Test: (516.7446514403842, 2.7690972754016664e-76)
 Kaiser-Meyer-Olkin Test: (0.8269750802872647)
+VIF test results:
+                  feature        VIF
+0           Verb Fluidity  19.422986
+1       General Knowledge  24.001532
+2      Word Understanding  22.450349
+3      Workplace Learning  19.369587
+4     Numerical Reasoning  22.901392
+5           Multi-tasking  19.851916
+6   Word Processing Speed  22.132149
+7              Vocabulary  29.175058
+8       Short Term Memory  13.399068
+9         Idea Generation  23.337047
+10  Number Categorisation   9.726811
+
 
 ===========================================================================
 Eigenvalue analysis
@@ -17,8 +31,8 @@ Eigenvalue suggested factors: 3
 Horn parallel analysis
 
 Factor eigenvalues for random matrix:
-[1.46206237 1.31128161 1.21656068 1.13232628 1.06316623 0.98981379
- 0.92443348 0.85545666 0.79639874 0.72261423 0.63588593]
+[1.45931538 1.31320942 1.21663875 1.13185294 1.05593023 0.98880454
+ 0.92710384 0.86108929 0.79279355 0.72122532 0.64203675]
 
 Factor eigenvalues for data:
 [3.84134406 1.44320504 1.11393777 0.88975262 0.76243791 0.6311851

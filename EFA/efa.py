@@ -178,7 +178,7 @@ def EFA_analysis(data, filename: str, number_topics: int, rotation_method: str, 
     paf.set_params(n_factors=number_topics, rotation=rotation_method)
     paf.fit(data)
     plot_paf_results(paf, filename, number_topics, headers)
-    print(f"Correlation Scores:\n{paf.loadings_}\n", file=log)
+    print(f"Loading Scores:\n{paf.loadings_}\n", file=log)
     print(f"Communality Scores:\n{paf.get_communalities()}\n", file=log)
     print(f"Uniqueness Scores:\n{paf.get_uniquenesses()}\n", file=log)
 
