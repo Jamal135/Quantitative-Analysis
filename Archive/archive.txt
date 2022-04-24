@@ -1,0 +1,5 @@
+
+Hello! The CFA code here is a mess and barely functions.
+Python has very little package wise for CFA implementation.
+It is not recommended you rely on this code, though it may 
+help you in writing your own... perhaps.
