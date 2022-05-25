@@ -199,4 +199,4 @@ def EFA_pipeline(datafile: str, rotation_list: list = ["oblimin"], eisenvalue: b
             data, f"EFA_{datafile}_{rotation}_{topic_count}", topic_count, rotation, LOG)
 
 
-EFA_pipeline("data", drop_list=["subno"], rotation_list=["oblimin", "promax"])
+EFA_pipeline("data3", rotation_list=["oblimin", "promax"])

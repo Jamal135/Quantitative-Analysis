@@ -1,4 +1,4 @@
-# Creation Date: 18/04/2022
+# Creation Date: 19/05/2022
 
 import pandas
 
@@ -8,4 +8,4 @@ def convert_CSV(filename: str):
     dataframe.to_csv(f"{filename}.csv", index=False)
     print("Conversion Success")
 
-convert_CSV("Data")
+convert_CSV("data2")
