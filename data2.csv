@@ -1,4 +1,4 @@
-orgid,gender,age,cont1,cont2,cont3,neg1,neg2,neg3,neg4,neg5,neg6,neg7,neg8,neg9,neg10,neg11,jsat1,jsat2,jsat3,Neur1,Neur2,Neur3,notrain1,notrain2,notrain3,nofeed1,nofeed2,nofeed3
+orgid,gender,age,cont1,cont2,cont3,neg1,neg2,neg3,neg4,neg5,neg6,neg7,neg8,neg9,neg10,neg11,jsat1,jsat2,jsat3,neur1,neur2,neur3,notrain1,notrain2,notrain3,nofeed1,nofeed2,nofeed3
 Org A,male,27.0,4.0,4.0,3.0,2.0,2.0,3.0,1.0,2.0,3.0,1.0,1.0,1.0,1.0,1.0,4.0,4.0,4.0,2.0,2.0,3.0,5.0,2.0,3.0,5.0,5.0,3.0
 Org A,female,25.0,2.0,2.0,2.0,5.0,2.0,2.0,2.0,2.0,1.0,1.0,5.0,2.0,3.0,1.0,4.0,4.0,2.0,3.0,3.0,4.0,2.0,2.0,2.0,4.0,4.0,4.0
 Org A,female,40.0,3.0,4.0,4.0,3.0,2.0,3.0,3.0,2.0,2.0,2.0,3.0,2.0,2.0,3.0,3.0,3.0,3.0,5.0,4.0,5.0,4.0,4.0,4.0,4.0,4.0,5.0
