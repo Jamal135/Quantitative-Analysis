@@ -26,3 +26,4 @@ for index, measures in enumerate(measure_list):
     df[variable_list[index]] = df[measures].sum(axis=1)/len(measures)
     df.drop(measures, axis = 1, inplace=True)
 df.to_csv(f"{filename}.csv", index=False)
+
