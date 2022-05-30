@@ -1,13 +1,15 @@
 # Creation Date: 18/04/2022
 
 
-import contextlib
 import os
 import numpy
+import semopy
 import pandas
+import contextlib
 import matplotlib
 import matplotlib.pyplot
 from factor_analyzer import FactorAnalyzer
+from factor_analyzer import ConfirmatoryFactorAnalyzer, ModelSpecificationParser
 from factor_analyzer.factor_analyzer import calculate_bartlett_sphericity, calculate_kmo
 
 
@@ -201,4 +203,20 @@ def EFA_pipeline(datafile: str, rotation_list: list = None, eisenvalue: bool = T
             data, f"EFA_{datafile}_{rotation}_{topic_count}", efa_method, topic_count, rotation, LOG)
 
 
-EFA_pipeline("data", drop_list=["subno"], rotation_list=["oblimin", "promax"])
+def cfa_analysis(datafile: str, model_dict: dict, model: str, drop_list: list = None):
+    ''' Purpose: Complete Confirmatory Factor Analysis. '''
+    df = load_CSV(datafile, drop_list)
+    model_spec = ModelSpecificationParser.parse_model_specification_from_dict(
+        df, model_dict)
+    cfa = ConfirmatoryFactorAnalyzer(model_spec, disp=False)
+    cfa.fit(df.values)
+    print(cfa.loadings_)
+    semopy_model = semopy.Model(model)
+    print(semopy.efa.explore_cfa_model(df))
+    semopy_model.fit(df)
+    cov = semopy_model.inspect('mx')['Psi']
+    stds = numpy.diagonal(cov) ** (-0.5)
+    corr = stds * cov * stds
+    print(corr)
+    stats = semopy.gather_statistics(semopy_model)
+    print(stats)
