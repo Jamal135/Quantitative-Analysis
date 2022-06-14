@@ -21,7 +21,7 @@ def create_scatter_plot(datafile: str, x_axis: str, y_axis: str,
                         xlabel: str, ylabel: str, title: str):
     ''' Purpose: Creates scatter plot between two variables. '''
     df = load_data(datafile)
-    plt.scatter(df[x_axis], df[y_axis], color='blue')
+    plt.scatter(df[x_axis], df[y_axis], color='chocolate')
     plt.title(title, fontsize=14)
     plt.xlabel(xlabel, fontsize=14)
     plt.ylabel(ylabel, fontsize=14)
@@ -42,7 +42,7 @@ def whisker_plot(datafile, rows: list, names: list, title: str):
 
 
 def interaction_scatter_plot(datafile: str, x_axis: str, y_axis: str, z_axis: str, 
-                             xlabel: str, ylabel: str, title: str):
+                             xlabel: str, ylabel: str, title: str = None):
     ''' Purpose: Creates scatter plot with colour for third term. '''
     df = load_data(datafile)
     plt.scatter(df[x_axis], df[y_axis], c=df[z_axis])

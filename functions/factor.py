@@ -18,7 +18,7 @@ matplotlib.rcParams['figure.figsize'] = (10.0, 6.0)
 
 
 def prepare_log(datafile: str, log: str):
-    reference = f"EFA/{datafile}.txt" if log is None else f"EFA/{log}.txt"
+    reference = f"{datafile}.txt" if log is None else f"{log}.txt"
     with contextlib.suppress(OSError):
         os.remove(reference)
     return open(reference, "a")
@@ -66,7 +66,7 @@ def plot_eisen_values(filename: str, eigen_values: list, width: int):
     matplotlib.pyplot.xlabel('Factor', {'fontsize': 15})
     matplotlib.pyplot.ylabel('Eigenvalue', {'fontsize': 15})
     matplotlib.pyplot.legend()
-    matplotlib.pyplot.savefig(f"EFA/{filename}_eisenvalues.png")
+    matplotlib.pyplot.savefig(f"{filename}_eisenvalues.png")
 
 
 def plot_horn_results(filename: str, eigenvalues: list, average_paf_eigens: list,
@@ -75,15 +75,15 @@ def plot_horn_results(filename: str, eigenvalues: list, average_paf_eigens: list
     matplotlib.pyplot.figure(figsize=(8, 6))
     matplotlib.pyplot.axhline(y=1, c='k', linestyle="dashdot", alpha=0.4)
     matplotlib.pyplot.plot(
-        range(1, width+1), average_paf_eigens, 'b', label='PAF - random', alpha=0.4)
+        range(1, width+1), average_paf_eigens, 'chocolate', label='PAF - random', alpha=0.4)
     matplotlib.pyplot.scatter(
-        range(1, width+1), eigenvalues, c='b', marker='o')
+        range(1, width+1), eigenvalues, c='chocolate', marker='o')
     matplotlib.pyplot.plot(
-        range(1, width+1), eigenvalues, 'b', label='PAF - data')
+        range(1, width+1), eigenvalues, 'chocolate', label='PAF - data')
     matplotlib.pyplot.xlabel('Factor', {'fontsize': 15})
     matplotlib.pyplot.ylabel('Eigenvalue', {'fontsize': 15})
     matplotlib.pyplot.legend()
-    matplotlib.pyplot.savefig(f"EFA/{filename}_parallel_analysis.png")
+    matplotlib.pyplot.savefig(f"{filename}_parallel_analysis.png")
 
 
 def horn_parallel_analysis(data, filename: str, efa_method: str, log: str, 
@@ -115,7 +115,7 @@ def plot_scree(proportional_variance: list, filename: str, width: int):
     matplotlib.pyplot.xlabel('Factor', {'fontsize': 15})
     matplotlib.pyplot.ylabel('Variance Explained', {'fontsize': 15})
     matplotlib.pyplot.legend()
-    matplotlib.pyplot.savefig(f"EFA/{filename}_variance_scree.png")
+    matplotlib.pyplot.savefig(f"{filename}_variance_scree.png")
 
 
 def determine_topics(data, total_topics: int, efa_method: str, filename: str,
@@ -158,14 +158,14 @@ def plot_paf_results(paf, filename: str, number_topics: int, headers: list):
     GRID = numpy.abs(paf.loadings_)
     xlabels = [f"Factor {base26(x + 1)}" for x in range(number_topics)]
     figure, axis = matplotlib.pyplot.subplots()
-    x = axis.pcolor(GRID, cmap="Blues")
+    x = axis.pcolor(GRID, cmap="YlOrBr")
     figure.colorbar(x, ax=axis)
     axis.set_yticks(numpy.arange(paf.loadings_.shape[0])+0.5, minor=False)
     axis.set_xticks(numpy.arange(paf.loadings_.shape[1])+0.5, minor=False)
     axis.set_yticklabels(headers)
     axis.set_xticklabels(xlabels)
     figure.tight_layout()
-    matplotlib.pyplot.savefig(f"EFA/{filename}_factor_analysis.png")
+    matplotlib.pyplot.savefig(f"{filename}_factor_analysis.png")
 
 
 # Rotation methods: https://factor-analyzer.readthedocs.io/en/latest/

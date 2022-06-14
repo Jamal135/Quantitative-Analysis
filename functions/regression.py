@@ -74,9 +74,10 @@ def statsmodel_moderated_regression(datafile: str, independent: str, moderator: 
     print(mod.summary())
 
 
-def process_mediated_regression(datafile: str, dependent: str, independent: str, mediator: list,
-                                controls_list: list = [], controls_argument: str = "all"):
+def process_mediated_regression(datafile: str, dependent: str, independent: str, mediator: list, controls_list: list = None, controls_argument: str = "all"):
     ''' Purpose: Performs Process Macro based mediated regression analysis. '''
+    if controls_list is None:
+        controls_list = []
     df = load_data(datafile)
     results = Process(
         data=df,
@@ -103,3 +104,14 @@ def pingouin_mediated_regression(datafile: str, dependent: str, independent: str
         seed=42
     )
     print(results)
+
+
+def binary_logistics_regression(datafile: str, formula: str, category_list: list = None):
+    ''' Purpose: Performs binary logistics regression analysis via the Statsmodel package. '''
+    df = load_data(datafile)
+    if category_list != None:
+        for category in category_list:
+            df[category] = df[category].astype('category')
+    df.info()
+    model = smf.logit(formula=formula, data=df).fit()
+    print(model.summary())
