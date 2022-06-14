@@ -25,7 +25,7 @@ def combine_variables(datafile: str, outputfile: str, variable_list: list, facto
     df = load_CSV(datafile)
     for index, measures in enumerate(variable_list):
         df[factor_list[index]] = df[measures].sum(axis=1)/len(measures)
-        df.drop(measures, axis = 1, inplace=True)
+        df.drop(measures, axis=1, inplace=True)
     df.to_csv(f"{outputfile}.csv", index=False)
 
 

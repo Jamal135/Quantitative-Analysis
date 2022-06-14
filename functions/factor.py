@@ -86,7 +86,7 @@ def plot_horn_results(filename: str, eigenvalues: list, average_paf_eigens: list
     matplotlib.pyplot.savefig(f"{filename}_parallel_analysis.png")
 
 
-def horn_parallel_analysis(data, filename: str, efa_method: str, log: str, 
+def horn_parallel_analysis(data, filename: str, efa_method: str, log: str,
                            times: int = 100):
     ''' Purpose: Performs horn parallel analysis to determine topics. '''
     print(f"\n{'='*75}\nHorn parallel analysis\n", file=log)

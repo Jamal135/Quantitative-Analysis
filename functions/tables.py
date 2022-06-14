@@ -41,7 +41,7 @@ def whisker_plot(datafile, rows: list, names: list, title: str):
     figure.clear()
 
 
-def interaction_scatter_plot(datafile: str, x_axis: str, y_axis: str, z_axis: str, 
+def interaction_scatter_plot(datafile: str, x_axis: str, y_axis: str, z_axis: str,
                              xlabel: str, ylabel: str, title: str = None):
     ''' Purpose: Creates scatter plot with colour for third term. '''
     df = load_data(datafile)

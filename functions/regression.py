@@ -52,29 +52,33 @@ def statsmodel_multiple_regression(datafile: str, dependent: list, independent: 
 
 def moderated_scatter_plot(df, x_axis: str, y_axis: str, xlabel: str, ylabel: str):
     ''' Purpose: Creates moderation interaction scatter plot. '''
-    np.corrcoef(df[x_axis],df[y_axis])
-    plt.scatter(df[x_axis],df[y_axis])
+    np.corrcoef(df[x_axis], df[y_axis])
+    plt.scatter(df[x_axis], df[y_axis])
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
     plt.show()
     plt.clf()
 
 
-def statsmodel_moderated_regression(datafile: str, independent: str, moderator: str, 
+def statsmodel_moderated_regression(datafile: str, independent: str, moderator: str,
                                     moderation_formula: str, xlabel: str, ylabel: str):
     ''' Purpose: Performs statsmodel based moderated regression analysis. '''
     df = load_data(datafile)
     df['interaction'] = df[moderator]*df[independent]
     moderated_scatter_plot(df, independent, "interaction", xlabel, ylabel)
-    center = lambda x: (x - x.mean())
-    df[['moderator_centered','independent_centered']] = df[[moderator,independent]].apply(center)
-    df['interaction_centered'] = df['moderator_centered'] * df['independent_centered']
-    moderated_scatter_plot(df, independent, "interaction_centered", xlabel, ylabel)
-    mod = smf.ols(formula = moderation_formula, data = df).fit()
+    def center(x): return (x - x.mean())
+    df[['moderator_centered', 'independent_centered']
+       ] = df[[moderator, independent]].apply(center)
+    df['interaction_centered'] = df['moderator_centered'] * \
+        df['independent_centered']
+    moderated_scatter_plot(
+        df, independent, "interaction_centered", xlabel, ylabel)
+    mod = smf.ols(formula=moderation_formula, data=df).fit()
     print(mod.summary())
 
 
-def process_mediated_regression(datafile: str, dependent: str, independent: str, mediator: list, controls_list: list = None, controls_argument: str = "all"):
+def process_mediated_regression(datafile: str, dependent: str, independent: str, mediator: list, 
+                                controls_list: list = None, controls_argument: str = "all"):
     ''' Purpose: Performs Process Macro based mediated regression analysis. '''
     if controls_list is None:
         controls_list = []
